@@ -1,0 +1,27 @@
+.ai-sum {
+  margin: 0 0 1.5rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(128, 128, 128, 0.35);
+  border-radius: 10px;
+  background: rgba(128, 128, 128, 0.07);
+  line-height: 1.5;
+}
+.ai-sum-head { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem; }
+.ai-sum-title { font-weight: 600; margin-right: auto; }
+.ai-sum-provider, .ai-sum-btn {
+  font: inherit; font-size: 0.85em; color: inherit;
+  background: transparent; border: 1px solid rgba(128, 128, 128, 0.45);
+  border-radius: 6px; padding: 0.15rem 0.5rem; cursor: pointer;
+}
+.ai-sum-btn:hover, .ai-sum-provider:hover { background: rgba(128, 128, 128, 0.15); }
+.ai-sum-body p { margin: 0.4rem 0; }
+.ai-sum-body ul { margin: 0.4rem 0; padding-left: 1.2rem; }
+.ai-sum-cite {
+  display: inline-block; font-size: 0.72em; line-height: 1; vertical-align: super;
+  padding: 0.12em 0.35em; margin-left: 0.15em; border-radius: 4px;
+  background: rgba(128, 128, 128, 0.2); text-decoration: none;
+}
+.ai-sum-muted { opacity: 0.65; }
+.ai-sum-error { color: #c0392b; }
+.ai-sum-loading .ai-sum-title::after { content: " ·"; animation: ai-sum-blink 1s infinite; }
+@keyframes ai-sum-blink { 50% { opacity: 0.2; } }

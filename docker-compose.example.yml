@@ -1,0 +1,24 @@
+services:
+  searxng:
+    image: searxng/searxng:latest
+    container_name: searxng
+    volumes:
+      - ./searxng:/etc/searxng
+    # no ports: searxng-ai-summary serves the UI
+    environment:
+      - SEARXNG_SECRET=add-your-own-secret-key-here
+      - SEARXNG_BASE_URL=http://localhost:8888/
+    restart: unless-stopped
+
+  searxng-ai-summary:
+    image: ghcr.io/deijany/searxng-ai-summary:latest
+    dcontainer_name: searxng-ai-summary
+    ports:
+      - "8888:8000"
+    environment:
+      - UPSTREAM=http://searxng:8080
+      - LLM_URL=http://litellm:4000/v1
+      - LLM_KEY=add-your-own-secret-key-here
+      - MODELS=Local=qwen3-8b, gpt-6-astra
+    depends_on: [ searxng ]
+    restart: unless-stopped
