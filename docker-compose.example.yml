@@ -11,7 +11,7 @@ services:
     restart: unless-stopped
 
   searxng-ai-summary:
-    image: ghcr.io/deijany/searxng-ai-summary:latest
+    image: deijany/searxng-ai-summary:latest
     container_name: searxng-ai-summary
     ports:
       - "8888:8000"
