@@ -28,7 +28,7 @@ LLM_URL = env("LLM_URL").rstrip("/")
 LLM_KEY = env("LLM_KEY", "none")
 AUTO_SUMMARIZE = env("AUTO_SUMMARIZE", "true").lower() == "true"
 MAX_RESULTS = int(env("MAX_RESULTS", "8"))
-MAX_TOKENS = int(env("MAX_TOKENS", "600"))
+MAX_TOKENS = int(env("MAX_TOKENS", "1200"))
 RATE_LIMIT_PER_MIN = int(env("RATE_LIMIT_PER_MIN", "20"))
 TIMEOUT = float(env("LLM_TIMEOUT", "120"))
 

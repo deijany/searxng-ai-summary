@@ -33,13 +33,24 @@
     const inline = (s) => cite(esc(s)
       .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
       .replace(/`([^`]+)`/g, "<code>$1</code>"));
-    return md.trim().split(/\n{2,}/).map((block) => {
-      const lines = block.split("\n");
-      if (lines.every((l) => /^\s*([-*•]|\d+\.)\s+/.test(l))) {
-        return "<ul>" + lines.map((l) => `<li>${inline(l.replace(/^\s*([-*•]|\d+\.)\s+/, ""))}</li>`).join("") + "</ul>";
+    const bullet = /^\s*([-*•]|\d+\.)\s+/;
+    let html = "", list = false, para = [];
+    const flushPara = () => { if (para.length) { html += `<p>${para.join("<br>")}</p>`; para = []; } };
+    const closeList = () => { if (list) { html += "</ul>"; list = false; } };
+    for (const raw of md.split("\n")) {
+      const line = raw.trimEnd();
+      if (!line.trim() || /^\s*[-*•]\s*$/.test(line)) { flushPara(); closeList(); continue; }
+      if (bullet.test(line)) {
+        flushPara();
+        if (!list) { html += "<ul>"; list = true; }
+        html += `<li>${inline(line.replace(bullet, ""))}</li>`;
+      } else {
+        closeList();
+        para.push(inline(line.replace(/^#+\s*/, "")));
       }
-      return `<p>${lines.map((l) => inline(l.replace(/^#+\s*/, ""))).join("<br>")}</p>`;
-    }).join("");
+    }
+    flushPara(); closeList();
+    return html;
   }
 
   const box = document.createElement("section");

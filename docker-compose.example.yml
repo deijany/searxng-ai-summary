@@ -12,7 +12,7 @@ services:
 
   searxng-ai-summary:
     image: ghcr.io/deijany/searxng-ai-summary:latest
-    dcontainer_name: searxng-ai-summary
+    container_name: searxng-ai-summary
     ports:
       - "8888:8000"
     environment:

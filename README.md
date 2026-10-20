@@ -38,7 +38,7 @@ Everything else is optional:
 
 - `AUTO_SUMMARIZE`: set to `false` to only summarize when you click the button. Default `true`.
 - `MAX_RESULTS`: how many results are sent to the model. Default `8`.
-- `MAX_TOKENS`: maximum length of the summary. Default `600`.
+- `MAX_TOKENS`: maximum length of the summary. Default `1200`.
 - `RATE_LIMIT_PER_MIN`: summaries allowed per user per minute. Default `20`.
 - `LLM_TIMEOUT`: seconds to wait for the model before giving up. Default `120`.
 - `SYSTEM_PROMPT`: replace the built-in instructions sent to the model.
