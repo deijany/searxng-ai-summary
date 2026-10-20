@@ -7,6 +7,12 @@ AI summaries on top of your SearXNG results, from any OpenAI-compatible endpoint
 - Uses the results already on the page (title, URL, snippet), so no extra searches
 - Summaries cached per browser tab, so going back doesn't call the model again
 
+<img src="docs/screenshot1.png" alt="searxng-ai-summary showing an AI summary above SearXNG results" width="600">
+
+<img src="docs/screenshot2.png" alt="searxng-ai-summary showing an AI summary above SearXNG results" width="600">
+
+<img src="docs/screenshot3.png" alt="searxng-ai-summary showing an AI summary above SearXNG results" width="600">
+
 ## How it works
 
 ```
