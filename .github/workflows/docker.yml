@@ -38,3 +38,11 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
+      - uses: peter-evans/dockerhub-description@v4
+        if: github.ref == 'refs/heads/main'
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: deijany/searxng-ai-summary
+          readme-filepath: ./README.md
+          short-description: "AI summaries for SearXNG results via a small proxy. Any OpenAI-compatible model. Survives updates."
